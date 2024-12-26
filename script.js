@@ -21,14 +21,20 @@ document.getElementById("search-form").addEventListener("submit", function (e) {
         // Start building the result
         let resultHTML = `<p><strong>اسم الطالب:</strong> ${student["اسم الطالب"]}</p>`;
 
-        // Iterate through all properties of the student
-        for (let key in student) {
-          if (key !== "رقم الجلوس" && key !== "اسم الطالب") {
-            resultHTML += `<p><strong>${key}:</strong> ${
-              student[key] || "غير محدد"
-            }</p>`;
+        // Displaying results for each subject
+        const subjects = [
+          "مباديء تصميم مواقع الإنترنت",
+          "التدريبات العملية",
+          "تحليل وتصميم النظم",
+        ];
+
+        subjects.forEach((subject) => {
+          if (student[subject]) {
+            resultHTML += `<p><strong>${subject}:</strong> ${student[subject]}</p>`;
+          } else {
+            resultHTML += `<p><strong>${subject}:</strong> غير محدد</p>`;
           }
-        }
+        });
 
         resultDiv.innerHTML = resultHTML;
       } else {
