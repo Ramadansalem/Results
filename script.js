@@ -21,10 +21,27 @@ document.getElementById("search-form").addEventListener("submit", function (e) {
         // Display the student result
         resultDiv.innerHTML = `
             <p><strong>اسم الطالب:</strong> ${student["اسم الطالب"]}</p>
-            <p><strong>الرياضيات:</strong> ${student["الرياضيات"]}</p>
-            <p><strong>العلوم:</strong> ${student["العلوم"]}</p>
-            <p><strong>اللغة الإنجليزية:</strong> ${student["اللغة الإنجليزية"]}</p>
-            <p><strong>التقدير العام:</strong> ${student["التقدير العام"]}</p>
+            <p><strong>مباديء تصميم مواقع الإنترنت:</strong> ${
+              student["مباديء تصميم مواقع الإنترنت"] || "غير محدد"
+            }</p>
+            <p><strong>درجة الواجبات:</strong> ${
+              student["درجة الواجبات"] || "غير محدد"
+            }</p>
+            <p><strong>درجة الكراسة:</strong> ${
+              student["درجة الكراسة"] || "غير محدد"
+            }</p>
+            <p><strong>درجة السلوك:</strong> ${
+              student["درجة السلوك"] || "غير محدد"
+            }</p>
+            <p><strong>درجة الحضور:</strong> ${
+              student["درجة الحضور"] || "غير محدد"
+            }</p>
+            <p><strong>درجة النشاط والتطبيقات الشهرية:</strong> ${
+              student["درجة النشاط والتطبيقات الشهرية"] || "غير محدد"
+            }</p>
+            <p><strong>مجموع اعمال الفصل الاول:</strong> ${
+              student["مجموع اعمال الفصل الاول"] || "غير محدد"
+            }</p>
           `;
       } else {
         resultDiv.innerHTML = "<p>رقم الجلوس غير موجود.</p>";
