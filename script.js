@@ -18,31 +18,19 @@ document.getElementById("search-form").addEventListener("submit", function (e) {
       const student = data.find((item) => item["رقم الجلوس"] === studentId);
 
       if (student) {
-        // Display the student result
-        resultDiv.innerHTML = `
-            <p><strong>اسم الطالب:</strong> ${student["اسم الطالب"]}</p>
-            <p><strong>مباديء تصميم مواقع الإنترنت:</strong> ${
-              student["مباديء تصميم مواقع الإنترنت"] || "غير محدد"
-            }</p>
-            <p><strong>درجة الواجبات:</strong> ${
-              student["درجة الواجبات"] || "غير محدد"
-            }</p>
-            <p><strong>درجة الكراسة:</strong> ${
-              student["درجة الكراسة"] || "غير محدد"
-            }</p>
-            <p><strong>درجة السلوك:</strong> ${
-              student["درجة السلوك"] || "غير محدد"
-            }</p>
-            <p><strong>درجة الحضور:</strong> ${
-              student["درجة الحضور"] || "غير محدد"
-            }</p>
-            <p><strong>درجة النشاط والتطبيقات الشهرية:</strong> ${
-              student["درجة النشاط والتطبيقات الشهرية"] || "غير محدد"
-            }</p>
-            <p><strong>مجموع اعمال الفصل الاول:</strong> ${
-              student["مجموع اعمال الفصل الاول"] || "غير محدد"
-            }</p>
-          `;
+        // Start building the result
+        let resultHTML = `<p><strong>اسم الطالب:</strong> ${student["اسم الطالب"]}</p>`;
+
+        // Iterate through all properties of the student
+        for (let key in student) {
+          if (key !== "رقم الجلوس" && key !== "اسم الطالب") {
+            resultHTML += `<p><strong>${key}:</strong> ${
+              student[key] || "غير محدد"
+            }</p>`;
+          }
+        }
+
+        resultDiv.innerHTML = resultHTML;
       } else {
         resultDiv.innerHTML = "<p>رقم الجلوس غير موجود.</p>";
       }
